@@ -44,7 +44,6 @@ class Snake(pygame.sprite.Sprite):
          self.dir = LEFT
 
    def DrawSnake(self):
-      # self.surface.fill((100,100,100))
       pygame.draw.rect(self.surface, (0,255,0), pygame.Rect(self.pos[0], self.pos[1], self.width, self.width))
 
    def CheckBorderCollision(self):

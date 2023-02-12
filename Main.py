@@ -12,23 +12,23 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((width, height))
 # screen.fill((100,100,100))
 
-board = [[0 for _ in range(cols)] for _ in range(rows)]
+# board = [[0 for _ in range(cols)] for _ in range(rows)]
 
-def ResetBoard():
-    global board
-    board = [[0 for _ in range(cols)] for _ in range(rows)]
+# def ResetBoard():
+#     global board
+#     board = [[0 for _ in range(cols)] for _ in range(rows)]
     
 def DrawBoard():
     screen.fill((255,255,255))
-    for i in range(len(board)):
-        for j in range(len(board[i])):
-
+    for i in range(rows):
+        for j in range(cols):
             rect = pygame.Rect(i*rectW, j*rectW, rectW, rectW)
             pygame.draw.rect(screen, (100,100,100), rect,1)
+            
 def GameLoop():
     global running, gameOver
     
-    s1 = s.Snake(screen, (0,0),rectW)
+    s1 = s.Snake(screen, ((cols//2)*rectW,(rows//2)*rectW),rectW)
     while running:
         events = pygame.event.get()
         for event in events:
@@ -37,7 +37,6 @@ def GameLoop():
             if event.type == pygame.KEYDOWN:
                 s1.ChangeDirection(event)
             if pygame.key.get_pressed()[pygame.K_r]:
-                ResetBoard()
                 GameLoop()
         DrawBoard()
         s1.update()
